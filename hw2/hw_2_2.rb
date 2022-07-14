@@ -1,5 +1,6 @@
 def process_str(string)
-  string.gsub!("#{string[string.index('#') - 1]}#", '') while string.include?('#')
+  string.sub!("#{string[string =~ /.#/]}#", '') while string =~ /.#/
+  string.delete!(string[string =~ /#/]) if string =~ /#/
   string
 end
 
