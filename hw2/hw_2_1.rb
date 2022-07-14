@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 def or_sum(n)
-  c = 0
-  s = 0
-  while c <= n
-    s |= c
-    c += 1
+  sum = 0
+  (n+1).times do |counter|
+    sum |= counter
   end
-  s
+  sum
 end
 
-puts or_sum(7)
+puts or_sum(4)
