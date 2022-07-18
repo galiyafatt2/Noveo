@@ -23,28 +23,30 @@ class Vector
 
   #inplace
   def add(other)
-    unless other.vector.size == vector.size
+   unless same_size?(other)
       return nil
     end
+    res = Vector.new(vector.dup)
     (vector.size).times { |i|
-      vector[i] += other.vector[i]
+      res.vector[i] = vector[i] + other.vector[i]
     }
-    vector
+    res.vector
   end
 
   def subtract(other)
-    if other.vector.size != vector.size
-      nil
+    unless same_size?(other)
+      return nil
     end
+    res = Vector.new(vector.dup)
     (vector.size).times { |i|
-      vector[i] -= other.vector[i]
+      res.vector[i] = vector[i] - other.vector[i]
     }
-    vector
+    res.vector
   end
 
   def dot(other)
-    if other.vector.size != vector.size
-      nil
+    unless same_size?(other)
+      return nil
     end
     res = 0
     (vector.size).times { |i|
@@ -64,10 +66,10 @@ class Vector
     Math.sqrt(res)
   end
 
-  def vector
-    @vector
-  end
-
+  private
+    def same_size?(other)
+      vector.size == other.vector.size
+    end
 end
 
 a = Vector.new([1, 2, 3])
