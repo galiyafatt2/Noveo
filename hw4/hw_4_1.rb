@@ -9,17 +9,17 @@
 # puts hash['foo']  # => bar
 
 class HashWithIndifferentAccess < Hash
-  def [](key) 
-    key = key.is_a?(Symbol) ? key.to_s : key
-    self.each { |k, value| return value if k.to_s == key }
+  def [](key)
+    return super(key.to_sym) if key.is_a?(String)
+    return super(key) if key.is_a?(Symbol)
+    self.each { |k, value| return value if super(k) == key }
+    return nil
   end
 end
 class Hash
-  def with_indifferent_access #: return HashWithIndifferentAccess
-    hash_new = HashWithIndifferentAccess.new(self)
-    self.each { |key, value| hash_new[key] = value }
-    hash_new
+  def with_indifferent_access
+    HashWithIndifferentAccess[self]
   end
 end
-hash_with_indif_acc = { a: 'apple', 'b': 1 }.with_indifferent_access
-puts hash_with_indif_acc['a'], hash_with_indif_acc[:a], hash_with_indif_acc['b'], hash_with_indif_acc[:b]
+hash_with_indif_acc = { a: 'apple', 1 => 1 }.with_indifferent_access
+puts hash_with_indif_acc[1], hash_with_indif_acc[:a], hash_with_indif_acc['a']
