@@ -1,4 +1,4 @@
-load 'node.rb' #класс Node в файле hw_5_2_node
+load 'hw_5_2_node.rb' #класс Node в файле hw_5_2_node
 class LinkedList
   attr_accessor :head
 
