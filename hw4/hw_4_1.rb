@@ -1,13 +1,6 @@
 # Нужно реализовать класс HashWithIndifferentAccess, который позволит обращаться к ключу-строке по символу и наоборот.
 # Для это следует расширить существующий класс Hash. Также добавить метод для перехода от обычного хеша к модифицированному.
 
-# Тестовые варианты
-
-# h = { a: 'apple' }.with_indifferent_access
-# puts h['a'] # => apple
-# hash[:foo] = 'bar'
-# puts hash['foo']  # => bar
-
 class HashWithIndifferentAccess < Hash
   def [](key)
     return super(key) if include?(key)
@@ -21,5 +14,5 @@ class Hash
     HashWithIndifferentAccess[self]
   end
 end
-hash_with_indif_acc = { a: 'apple', 1 => 1 }.with_indifferent_access
-puts hash_with_indif_acc[1], hash_with_indif_acc[:a], hash_with_indif_acc['a']
+hash_with_indif_acc = { a: 3, "b" => 5, 1 => 6 }.with_indifferent_access
+puts hash_with_indif_acc[3], hash_with_indif_acc[6], hash_with_indif_acc[1] # => nil, nil, 6
