@@ -1,17 +1,22 @@
-load 'hw_5_2_node.rb' #класс Node в файле hw_5_2_node
+require_relative 'hw_5_2_node.rb' #класс Node в файле hw_5_2_node
+
 class LinkedList
   attr_accessor :head
 
   def initialize
-    @head = Node.new(nil, nil) #возможно можно было как-то создать head при добавлении первого элемента...
+    @head = nil
   end
 
   def append(value)
+    old_node = nil
     current_node = head
-    while current_node.next_node != nil
+    while current_node != nil
+      old_node = current_node
       current_node = current_node.next_node
     end
-    current_node.next_node = Node.new(value, nil)
+    current_node = Node.new(value, nil)
+    old_node.next_node = current_node if old_node
+    @head = current_node if head.nil?
   end
 
   def append_after(val, after_val)
@@ -43,12 +48,12 @@ class LinkedList
 
   def to_s
     str = '('
-    current_node = head.next_node
+    current_node = head
     while current_node.next_node != nil
-      str += current_node.value.to_s + ', '
+      str += "#{current_node}, "
       current_node = current_node.next_node
     end
-    str += current_node.value.to_s + ')'
+    str += "#{current_node})"
     str
   end
 end
