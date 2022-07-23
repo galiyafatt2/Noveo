@@ -26,22 +26,24 @@ class Vector
    unless same_size?(other)
       return nil
     end
-    res = Vector.new(vector.dup)
+    res = []
     (vector.size).times { |i|
-      res.vector[i] = vector[i] + other.vector[i]
+      res[i] = vector[i] + other.vector[i]
     }
-    res.vector
+    Vector.new(res)
+    res
   end
 
   def subtract(other)
     unless same_size?(other)
       return nil
     end
-    res = Vector.new(vector.dup)
+    res = []
     (vector.size).times { |i|
-      res.vector[i] = vector[i] - other.vector[i]
+      res[i] = vector[i] - other.vector[i]
     }
-    res.vector
+    Vector.new(res)
+    res
   end
 
   def dot(other)
