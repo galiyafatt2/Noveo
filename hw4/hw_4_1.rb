@@ -10,9 +10,9 @@
 
 class HashWithIndifferentAccess < Hash
   def [](key)
+    return super(key) if include?(key)
     return super(key.to_sym) if key.is_a?(String)
     return super(key) if key.is_a?(Symbol)
-    self.each { |k, value| return value if super(k) == key }
     return nil
   end
 end
