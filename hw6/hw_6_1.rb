@@ -1,4 +1,4 @@
-require_relative '6_1_node'
+require_relative 'hw_6_1_node'
 
 class BinaryTree
   attr_accessor :root
