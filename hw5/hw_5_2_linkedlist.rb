@@ -21,18 +21,22 @@ class LinkedList
 
   def append_after(val, after_val)
     current_node = head
-    while current_node.value != val && current_node != nil
+    while current_node != nil && current_node.value != val
       current_node = current_node.next_node
     end
+    return if current_node.nil?
+    
     new_node = Node.new(after_val, current_node.next_node)
     current_node.next_node = new_node
   end
 
   def delete(val)
     current_node = head
-    while current_node.next_node.value != val && current_node != nil
+    while current_node.next_node != nil && current_node.next_node.value != val
       current_node = current_node.next_node
     end
+    return if current_node.next_node.nil?
+    
     current_node.next_node = current_node.next_node.next_node
   end
   
@@ -53,8 +57,7 @@ class LinkedList
       str += "#{current_node}, "
       current_node = current_node.next_node
     end
-    str += "#{current_node})"
-    str
+    str + "#{current_node})"
   end
 end
 
