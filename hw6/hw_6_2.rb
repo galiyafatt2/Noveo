@@ -34,7 +34,7 @@ class VersionManager
   end
 
   def rollback!
-    raise 'Can not rollback to previous version' if save[-1].nil?
+    raise 'Can not rollback to previous version' if save.empty?
 
     old_ver = save.pop
     @major = old_ver[0]
