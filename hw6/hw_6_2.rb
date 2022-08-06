@@ -5,7 +5,6 @@
 # Если версия не указана, то значение по умолчанию - “0.0.1”.
 
 class VersionManager
-  attr_accessor :major, :minor, :patch, :save
 
   def initialize(version = '0.0.1')
     vers_str = version.split('.')
@@ -16,34 +15,34 @@ class VersionManager
   end
 
   def major!
-    @save << [major, minor, patch]
+    @save << [@major, @minor, @patch]
     @major += 1
     @minor = 0
     @patch = 0
   end
 
   def minor!
-    @save << [major, minor, patch]
+    @save << [@major, @minor, @patch]
     @minor += 1
     @patch = 0
   end
 
   def patch!
-    @save << [major, minor, patch]
+    @save << [@major, @minor, @patch]
     @patch += 1
   end
 
   def rollback!
-    raise 'Can not rollback to previous version' if save.empty?
+    raise 'Can not rollback to previous version' if @save.empty?
 
-    old_ver = save.pop
+    old_ver = @save.pop
     @major = old_ver[0]
     @minor = old_ver[1]
     @patch = old_ver[2]
   end
 
   def release
-    "#{major}.#{minor}.#{patch}"
+    "#{@major}.#{@minor}.#{@patch}"
   end
 
 end
