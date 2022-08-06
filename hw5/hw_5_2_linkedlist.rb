@@ -1,7 +1,7 @@
 require_relative 'hw_5_2_node.rb' #класс Node в файле hw_5_2_node
 
 class LinkedList
-  attr_accessor :head
+  attr_reader :head
 
   def initialize
     @head = nil
@@ -32,10 +32,10 @@ class LinkedList
 
   def delete(val)
     current_node = head
-    while current_node.next_node != nil && current_node.next_node.value != val
+    while !current_node&.next_node.nil? && current_node&.next_node.value != val
       current_node = current_node.next_node
     end
-    return if current_node.next_node.nil?
+    return if current_node&.next_node.nil?
     
     current_node.next_node = current_node.next_node.next_node
   end
