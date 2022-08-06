@@ -1,8 +1,8 @@
 module IndifferentAccessable
   def [](key)
     return super(key) if include?(key)
-    return super(key.to_sym) if include?(key&.to_sym)
-    return super(key.to_s) if include?(key&.to_s)
+    return super(key.to_sym) if key.is_a?(String) && include?(key.to_sym)
+    return super(key.to_s) if key.is_a?(Symbol) && include?(key.to_s)
 
     nil
   end
