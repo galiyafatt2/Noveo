@@ -42,7 +42,7 @@ class LinkedList
   
   def find(val)
     current_node = head
-    return nil if !current_node.next_node
+    return nil if !current_node&.next_node
     return current_node.value if current_node.value == val
     while current_node
       return current_node.value if current_node.value == val
@@ -53,7 +53,7 @@ class LinkedList
   def to_s
     str = '('
     current_node = head
-    while current_node.next_node != nil
+    while current_node&.next_node != nil
       str += "#{current_node}, "
       current_node = current_node.next_node
     end
