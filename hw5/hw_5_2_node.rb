@@ -5,6 +5,16 @@ class Node
       @next_node = next_node
   end
 
+  def reverse_node(cur = self)
+    return cur if cur.nil?
+    return cur if cur.next_node.nil?
+
+    new_node = reverse_node(cur.next_node)
+    cur.next_node.next_node = cur
+    cur.next_node = nil
+    new_node
+  end
+  
   def to_s
     value.to_s
   end
