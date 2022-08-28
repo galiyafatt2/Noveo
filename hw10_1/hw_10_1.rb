@@ -10,12 +10,6 @@ class HtmlBuilder
     @result = "<html> \n #{@result}\n</html>" unless result == ''
   end
 
-  def body(&block)
-    @result += "<body>\n"
-    block.call(self)
-    @result += ' </body>'
-  end
-
 
   private
 
