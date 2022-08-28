@@ -62,6 +62,8 @@ class LinkedList
   
   #-> returns new list but current list stays without changes
   def reverse
+    return if head.nil?
+    
     new_list = LinkedList.new
     cur = head
     until cur.nil?
@@ -73,6 +75,7 @@ class LinkedList
 
   #-> current list with reversed node
   def reverse!
+    return if head.nil?
     @head = head.reverse_node
     self
   end
