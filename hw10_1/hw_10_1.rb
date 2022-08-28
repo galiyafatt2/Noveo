@@ -10,7 +10,6 @@ class HtmlBuilder
     @result = "<html> \n #{@result}\n</html>" unless result == ''
   end
 
-
   private
 
   def method_missing(method_name, *args, class_name: nil, &block)
