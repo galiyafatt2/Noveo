@@ -6,8 +6,7 @@ class Node
   end
 
   def reverse_node(cur = self)
-    return cur if cur.nil?
-    return cur if cur.next_node.nil?
+    return cur if cur&.next_node.nil?
 
     new_node = reverse_node(cur.next_node)
     cur.next_node.next_node = cur
