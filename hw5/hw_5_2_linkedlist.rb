@@ -59,6 +59,27 @@ class LinkedList
     end
     str + "#{current_node})"
   end
+  
+  #-> returns new list but current list stays without changes
+  def reverse
+    return if head.nil?
+    
+    new_list = LinkedList.new
+    cur = head
+    until cur.nil?
+      new_list.append(cur)
+      cur = cur.next_node
+    end
+    new_list.reverse!
+  end
+
+  #-> current list with reversed node
+  def reverse!
+    return if head.nil?
+    @head = head.reverse_node
+    self
+  end
+  
 end
 
 list = LinkedList.new
@@ -75,3 +96,7 @@ puts list #=> (3, 15, 5, 10, 25)
 list.delete(10) 
 puts list #=> (3, 15, 5, 25)
 p list.find(25) #=> 25
+
+puts list.reverse! #=> (25, 5, 15, 3)
+puts list.reverse #=> (3, 15, 5, 25)
+puts list #=> (25, 5, 15, 3)
