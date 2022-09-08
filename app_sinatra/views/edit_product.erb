@@ -1,0 +1,26 @@
+<h1>Update <%= @product[1] %></h1>
+
+<form action="/products/<%= @product[0] %>" method="post">
+  <input name="_method" type="hidden" value="patch">
+
+  <div class="form-group">
+    <label for="name">Product name</label>
+    <input id="name" name="product[name]" class="form-control" type="text">
+    <label for="count">Product count</label>
+    <input id="count" name="product[count]" class="form-control" type="text">
+    <label for="price">Product price</label>
+    <input id="price" name="product[price]" class="form-control" type="text">
+    <label for="creator">Product creator</label>
+    <input id="creator" name="product[creator]" class="form-control" type="text">
+  </div>
+
+  <button type="submit" class="btn btn-success">Update</button>
+</form>
+
+<form action="/products/<%= @product[0] %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+
+  <button type="submit" class="btn btn-danger">Delete product</button>
+</form>
+
+<p><a href="/products">Return to product list</a></p>

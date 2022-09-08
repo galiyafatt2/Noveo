@@ -1,0 +1,15 @@
+<h1>Add a new product</h1>
+
+<form action="/products" method="post">
+  <div class="form-group">
+    <label for="name">Product name</label>
+    <input id="name" name="product[name]" class="form-control" type="text">
+    <label for="count">Product count</label>
+    <input id="count" name="product[count]" class="form-control" type="text">
+    <label for="price">Product price</label>
+    <input id="price" name="product[price]" class="form-control" type="text">
+    <label for="creator">Product creator</label>
+    <input id="creator" name="product[creator]" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn btn-success">Create!</button>
+</form>
